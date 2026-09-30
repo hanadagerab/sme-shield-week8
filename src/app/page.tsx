@@ -1,3 +1,4 @@
+import PayerModel from "@/components/PayerModel";
 import { practices } from "@/lib/data";
 import {
   getEvidenceSummary,
@@ -223,18 +224,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-dashed border-slate-300 bg-white/60 p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-400">
-            Next layer
-          </p>
-          <h2 className="mt-2 text-2xl font-semibold text-slate-950">
-            Payer economics + deterministic decision
-          </h2>
-          <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-            The next phase will connect an entered annual budget to transparent
-            delivery costs and a deterministic GO, TEST, or NO-GO gate.
-          </p>
-        </section>
+        <PayerModel />
 
         <footer className="mt-16 border-t border-slate-200 py-8 text-sm text-slate-500">
           SME Shield · Week 8 MONEY build · Simulated pilot only
