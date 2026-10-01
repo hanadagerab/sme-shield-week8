@@ -21,9 +21,10 @@ function formatMXN(value: number) {
 export default function PayerModel() {
   const [budgetInput, setBudgetInput] = useState(String(DEFAULT_BUDGET));
 
-  const parsedBudget = Number(budgetInput);
+  const normalizedBudgetInput = budgetInput.replace(/,/g, "").trim();
+  const parsedBudget = Number(normalizedBudgetInput);
   const budgetIsValid =
-    budgetInput.trim() !== "" &&
+    normalizedBudgetInput !== "" &&
     Number.isFinite(parsedBudget) &&
     parsedBudget >= 0 &&
     parsedBudget <= MAX_BUDGET;
