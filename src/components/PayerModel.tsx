@@ -116,36 +116,47 @@ export default function PayerModel() {
               </span>
             </div>
 
-            <dl className="mt-5 space-y-4 text-sm">
+            <dl className="mt-5 space-y-5 text-sm">
               <CostRow
                 label="One-time onboarding"
                 value={formatMXN(DEFAULT_COST_ASSUMPTIONS.onboardingCostMXN)}
+                basis="Simulated estimate: 8 hours × MXN 1,500/hour."
               />
               <CostRow
                 label="Routine delivery / practice"
                 value={formatMXN(
                   DEFAULT_COST_ASSUMPTIONS.routineDeliveryCostPerPracticeMXN,
                 )}
+                basis="Simulated estimate: 1.2 hours/practice × MXN 1,500/hour."
               />
               <CostRow
                 label="Human escalation reserve"
                 value={formatMXN(
                   DEFAULT_COST_ASSUMPTIONS.humanEscalationReserveMXN,
                 )}
+                basis="Simulated reserve: up to 10 specialist hours × MXN 1,500/hour."
               />
               <CostRow
                 label="Member communication"
                 value={formatMXN(
                   DEFAULT_COST_ASSUMPTIONS.optionalCommunicationCostMXN,
                 )}
+                basis="Simulated fixed campaign and member-communication allowance."
               />
             </dl>
 
-            <p className="mt-5 text-xs leading-5 text-slate-500">
-              These are simulated delivery-cost inputs for the Week 8 pilot.
-              They are not market quotes and do not represent proven
-              willingness to pay.
-            </p>
+            <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+              <p className="text-sm font-semibold text-amber-950">
+                Provenance note
+              </p>
+              <p className="mt-2 text-xs leading-5 text-amber-900">
+                Every cost shown above is a simulated planning assumption for
+                the Week 8 pilot. The basis is visible so the user can see what
+                must be validated with real vendor rates, actual delivery
+                hours, and observed specialist usage before a board-level
+                funding decision.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -258,14 +269,21 @@ export default function PayerModel() {
 function CostRow({
   label,
   value,
+  basis,
 }: {
   label: string;
   value: string;
+  basis: string;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4">
-      <dt className="text-slate-600">{label}</dt>
-      <dd className="font-semibold text-slate-950">{value}</dd>
+    <div className="border-b border-slate-100 pb-4 last:border-b-0 last:pb-0">
+      <div className="flex items-center justify-between gap-4">
+        <dt className="text-slate-600">{label}</dt>
+        <dd className="font-semibold text-slate-950">{value}</dd>
+      </div>
+      <p className="mt-1 text-xs leading-5 text-slate-500">
+        Basis: {basis}
+      </p>
     </div>
   );
 }
