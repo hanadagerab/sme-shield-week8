@@ -1,5 +1,6 @@
 "use client";
 
+import PayerActions from "@/components/PayerActions";
 import { useMemo, useState } from "react";
 import {
   calculateEconomics,
@@ -238,6 +239,16 @@ export default function PayerModel() {
               </p>
             </div>
           </div>
+
+          <PayerActions
+            decision={budgetIsValid ? decision.label : "NO-GO"}
+            budgetMXN={budgetIsValid ? parsedBudget : 0}
+            totalDeliveryCostMXN={economics.totalDeliveryCostMXN}
+            costPerPracticeMXN={economics.costPerPracticeMXN}
+            humanEscalationReserveMXN={economics.humanEscalationReserveMXN}
+            budgetHeadroomMXN={economics.budgetHeadroomMXN}
+            unresolvedAssumptions={decision.unresolvedAssumptions}
+          />
         </div>
       </div>
     </section>
